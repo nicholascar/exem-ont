@@ -1,0 +1,149 @@
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix exem: <https://data.surroundaustralia.com/def/exem/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<https://data.surroundaustralia.com/def/exem>
+    a owl:Ontology ;
+    dcterms:created "2021-09-28"^^xsd:date ;
+    dcterms:creator <http://orcid.org/0000-0002-8742-7730> ;
+    dcterms:description "An ontology for the description of examples."@en ;
+    dcterms:modified "2021-09-28" ;
+    dcterms:publisher <https://linked.data.gov.au/org/surround> ;
+    dcterms:title "Exemplification Ontology"@en ;
+    vann:preferredNamespacePrefix "exem" ;
+    owl:versionIRI <https://data.surroundaustralia.com/def/exem/0.1> ;
+    owl:versionInfo "0.1"@en ;
+.
+
+<http://orcid.org/0000-0002-8742-7730>
+    a sdo:Person ;
+    sdo:email "nicholas.car@surroundaustralia.com"^^xsd:anyURI ;
+    sdo:name "Nicholas J. Car" ;
+.
+
+<https://linked.data.gov.au/org/surround>
+    a sdo:Organization ;
+    sdo:name "SURROUND Australia Pty Ltd" ;
+    sdo:url "https://surroundaustralia.com"^^xsd:anyURI ;
+.
+
+dcterms:conformsTo
+    a rdf:Property , owl:ObjectProperty ;
+    rdfs:label "conforms to"@en;
+    dcam:rangeIncludes dcterms:Standard ;
+    rdfs:comment "An established standard to which the described resource conforms."@en ;
+    rdfs:isDefinedBy dcterms: ;
+.
+
+dcterms:created
+    a rdf:Property ;
+    rdfs:label "date created"@en ;
+    rdfs:comment "Date of creation of the resource."@en ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:range rdfs:Literal ;
+.
+
+dcterms:format
+    a rdf:Property , owl:AnnotationProperty ;
+    rdfs:label "format"@en ;
+    dcam:rangeIncludes dcterms:Extent , dcterms:MediaType ;
+    rdfs:comment "The file format, physical medium, or dimensions of the resource."@en ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:range dcterms:MediaTypeOrExtent ;
+.
+
+dcterms:source
+    a rdf:Property ;
+    rdfs:label "Source"@en ;
+    rdfs:comment "A related resource from which the described resource is derived."@en ;
+    rdfs:isDefinedBy dcterms: ;
+.
+
+dcterms:title
+    a rdf:Property ;
+    rdfs:label "Title"@en ;
+    rdfs:comment "A name given to the resource."@en ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:range rdfs:Literal ;
+.
+
+prof:hasArtifact
+    a owl:ObjectProperty ;
+    rdfs:label "has artifact"@en ;
+    rdfs:domain prof:ResourceDescriptor ;
+    skos:definition "The URL of a downloadable file with particulars such as its format and role indicated by the Resource Descriptor"@en ;
+    rdfs:isDefinedBy prof: ;
+.
+
+exem:example
+    a rdf:Property ;
+    rdfs:label "example" ;
+    rdfs:comment "An example of the thing this property is used for (its domain). This is a general-purpose property and no role or format of the example content many be inferred from its use." ;
+.
+
+exem:canonicalExample
+    a rdf:Property ;
+    rdfs:subPropertyOf exem:example ;
+    rdfs:label "canonical example" ;
+    rdfs:comment "An example that is to be considered as definitive for the resource being exemplified." ;    
+.
+
+exem:imageExample
+    a rdf:Property ;
+    rdfs:subPropertyOf exem:example , foaf:depiction ;
+    rdfs:range foaf:Image ;
+    rdfs:label "image example" ;
+    rdfs:comment "An example of a resource in image form." ;    
+.
+
+exem:implExample
+    a rdf:Property ;
+    rdfs:subPropertyOf exem:example ;
+    rdfs:label "implementation example" ;
+    rdfs:comment "An example that is of the resource being exemplified as implemented in some model or system." ;    
+.
+
+foaf:depiction 
+    a rdf:Property , owl:ObjectProperty ;
+    rdfs:subPropertyOf exem:example ;
+    rdfs:label "depiction" ;
+    rdfs:comment "A depiction of some thing." ;
+    rdfs:domain owl:Thing ;
+    rdfs:isDefinedBy foaf: ;
+    rdfs:range foaf:Image ;
+    owl:inverseOf foaf:depicts ;
+.
+
+prof:hasRole
+    a owl:ObjectProperty ;
+    rdfs:label "has role"@en ;
+    rdfs:domain prof:ResourceDescriptor ;
+    rdfs:range skos:Concept ;
+    skos:definition "The function of an artifact described by a Resource Descriptor, such as specification, guidance etc."@en ;
+    rdfs:isDefinedBy prof: ;
+.
+
+prof:ResourceDescriptor
+    a owl:Class ;
+    rdfs:label "Resource Descriptor"@en ;
+    skos:definition "A description of a resource that defines an aspect - a particular part, feature or role - of a Profile"@en ;
+    rdfs:isDefinedBy prof: ;
+.
+
+skos:example 
+    a rdf:Property , owl:AnnotationProperty ;
+    rdfs:label "example"@en ;
+    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+    rdfs:subPropertyOf skos:note , exem:example ;
+    skos:definition "An example of the use of a concept."@en ;
+.
