@@ -8,5 +8,5 @@ This ontology will soon be a public product, published by [SURROUND Australia Pt
 
 See the draft rendering ontology documents: 
 
-1. [Ontology Documentation in HTML](https://raw.githack.com/surroundaustralia/exem-ont/master/exem.html)
-1. [Ontology RDF file in Turtle format](https://raw.githack.com/surroundaustralia/exem-ont/master/exem.ttl)
+1. [Ontology Documentation in HTML](exem.html)
+1. [Ontology RDF file in Turtle format](exem.ttl)
