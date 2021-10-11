@@ -6,4 +6,7 @@ This ontology mostly reuses existing ontologies' classes and properties for the 
 
 This ontology will soon be a public product, published by [SURROUND Australia Pty ltd.](https://surroundaustralia.com).
 
-See the draft rendering here: https://raw.githack.com/surroundaustralia/exem-ont/master/exem.html
+See the draft rendering ontology documents: 
+
+1. [Ontology Documentation in HTML](https://raw.githack.com/surroundaustralia/exem-ont/master/exem.html)
+1. [Ontology RDF file in Turtle format](https://raw.githack.com/surroundaustralia/exem-ont/master/exem.ttl)
